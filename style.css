@@ -1,0 +1,85 @@
+body{
+    background: #f2f2f2;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    margin: 15px 10px;
+}
+.input{
+    outline: none;
+    padding: 10px;
+    width: 400px;
+
+}
+.dropdown{
+    height: 300px;
+    border-radius: 5px;
+}
+
+.dropdown-item{
+    width: 400px;
+    background: rgba(255, 193, 119, 0.49);
+    padding: 10px 20px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    word-break: break-all;
+}
+.dropdown-item:hover{
+    background: white;
+}
+.added{
+    position: relative;
+    width: 400px;
+    padding: 10px 20px;
+    background: rgba(164, 159, 243, 0.96);
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 0 10px;
+    word-break: break-all;
+}
+.star{
+    color: black;
+}
+.name{
+    margin: 10px 0;
+    color: black;
+}
+.btn-del{
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px 10px 10px 0;
+}
+.error{
+    width: 400px;
+    border-radius: 5px;
+    background: red;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+@media (max-width: 400px) {
+    .input, .added, .error, .dropdown-item{
+        width: 100%;
+        min-width: 300px;
+    }
+}
+
+
