@@ -24,18 +24,22 @@ body{
 .dropdown{
     height: 300px;
     border-radius: 5px;
+    list-style: none; 
 }
 
 .dropdown-item{
     width: 400px;
-    background: rgba(255, 193, 119, 0.49);
-    padding: 10px 20px;
     border-bottom: 1px solid white;
-    cursor: pointer;
-    word-break: break-all;
 }
 .dropdown-item:hover{
     background: white;
+}
+.btn-item{
+    width: 400px;
+    height: 40px;
+    border: none;
+    background: #c3d5e5;
+    cursor: pointer;
 }
 .added{
     position: relative;
@@ -47,6 +51,7 @@ body{
     border-radius: 5px;
     margin: 0 0 10px;
     word-break: break-all;
+    list-style: none;
 }
 .star{
     color: black;

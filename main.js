@@ -1,17 +1,21 @@
-const input = document.querySelector('.input')
-const dropdownMenu = document.querySelector('.dropdown')
-const repoDiv = document.querySelector('.repositories')
-
-function errorResponse() {
+function errorResponse(response){
     const errorDiv = createElement('div')
-    errorDiv.classList.add('error')
-    errorDiv.textContent = 'Ошибка сервера: "Превышен лимит запросов"'
-    dropdownMenu.append(errorDiv)
-    setTimeout(()=>{
+        errorDiv.classList.add('error')
+        errorDiv.innerHTML = `Ошибка HTTP: ${response.status}`
+        dropdownMenu.append(errorDiv)
+        setTimeout(()=>{
         errorDiv.remove()
-    }, 2000)
+        }, 2000)
 }
 
+const input = document.querySelector('.input')
+const dropdownMenu = document.querySelector('.dropdown')
+
+function enumerationElem(res){
+    res.forEach((el) => {
+        createDomElem(el)
+    })
+}
 
 
 const debounce = (fn, debounceTime) => {
@@ -37,34 +41,25 @@ input.addEventListener('keyup', (e) => {
     else clearDropdown()
 })
 
-function view(el) {
-    const item = document.createElement('div')
+function createDomElem(el) {
+    const item = document.createElement('li')
     item.classList.add('dropdown-item')
-    item.innerHTML = `<div>${el.full_name}</div>`
+    item.innerHTML = `<button class="btn-item">${el.full_name}</button>`
 
     item.addEventListener('click', () => {
-        const addedItem = createElement('div')
+        const addedItem = createElement('ul') 
         input.value = ''
         clearDropdown()
 
-        const fullname = createElement('div')
-        const name = createElement('div')
-        const star = createElement('div')
-        const btn = createElement('button')
-
-        name.classList.add('name')
-        star.classList.add('star')
-        btn.classList.add('btn-del')
-
-        fullname.textContent = `Full name: ${el.full_name}`
-        name.textContent = `Author: ${el.owner.login}`
-        star.textContent = `Stars: ${el.stargazers_count}`
-        btn.textContent = `Delete`
-
-        addedItem.append(fullname, name, star, btn)
+        addedItem.innerHTML = `
+            <li>Full name: ${el.full_name}</li>
+            <li class='name'>Author: ${el.owner.login}</li>
+            <li class='star'>Stars: ${el.stargazers_count}</li>
+            <button class='btn-del'>Delete</button>
+        `
 
         addedItem.classList.add('added')
-        repoDiv.append(addedItem)
+        dropdownMenu.insertAdjacentElement('afterend', addedItem)
         clickBtnDel()
     })
     dropdownMenu.append(item)
